@@ -1,0 +1,17 @@
+# Define variables
+SHELL := /bin/bash
+README = README.md
+SCRIPT = guessinggame.sh
+
+# Rule to create the README file
+$(README): $(SCRIPT)
+	@echo "# Guessing Game" > $(README)
+	@echo "Date and Time: $(shell date)" >> $(README)
+	@echo "Number of lines in guessinggame.sh: $(shell wc -l < $(SCRIPT))" >> $(README)
+
+# Rule to run the game
+run:
+	bash $(SCRIPT)
+
+# Phony targets
+.PHONY: run
